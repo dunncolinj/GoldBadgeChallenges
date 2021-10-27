@@ -29,33 +29,49 @@ namespace Challenge1.Repository
         public List<MenuItem> _menu = new List<MenuItem>();
            
             
-        public void Add(MenuItem itemToAdd)
+        public bool Add(MenuItem itemToAdd)
         {
-            _menu.Add(itemToAdd);
-        }
+            MenuItem result;
+            result = Get(itemToAdd.MealNumber);
 
-
-        public void Remove(MenuItem itemToRemove)
-        {
-            _menu.Remove(itemToRemove);
-        }
-
-        public void Show()
-        {
-            Console.WriteLine("Menu\n\n");
-            foreach(MenuItem item in _menu)
+            if (result == null)
             {
-                Console.WriteLine(item.MealNumber + ". " + item.MealName);
-                Console.WriteLine(item.Description);
-                Console.Write("Ingredients: ");
-                foreach (string ingredient in item.Ingredients)
-                {
-                    Console.Write(ingredient + ", ");
-                }
-                Console.WriteLine();
-                Console.WriteLine("Price: " + item.Price);
+                _menu.Add(itemToAdd);
+                return true;
             }
+            else
+            {
+                return false;
+            }
+
         }
 
+
+        public bool Remove(MenuItem menuItem)
+        {
+            if (_menu.Contains(menuItem))
+            {
+                _menu.Remove(menuItem);
+                return true;
+            }
+            else
+            {
+                return false;
+            }                
+        }
+
+        public MenuItem Get(int mealNumber)
+        {
+            MenuItem result = null;
+
+            foreach (MenuItem item in _menu)
+            {
+                if (item.MealNumber == mealNumber)
+                {
+                    result = item;
+                }
+            }
+            return result;
+        }
     }
 }
