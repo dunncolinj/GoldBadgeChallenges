@@ -29,5 +29,21 @@ namespace Challenge2.Repository
         {
             _claims.Enqueue(newClaim);
         }
+
+        public Claim Peek()
+        {
+            Claim result;
+            if (_claims.Count > 0)
+            {
+                result = _claims.Peek();
+            }
+            else
+            {
+                result = null;
+            }
+            return result;
+        }
+
+
     }
 }
