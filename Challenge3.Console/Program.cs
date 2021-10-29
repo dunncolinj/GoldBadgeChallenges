@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Challenge3.Console
+namespace Challenge3.ConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
         {
+            ConsoleUI myConsole = new ConsoleUI();
+            myConsole.Run();
         }
     }
 }
