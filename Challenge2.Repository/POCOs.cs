@@ -27,7 +27,7 @@ namespace Challenge2.Repository
             DateOfAccident = dateOfAccident;
             DateOfClaim = dateOfClaim;
 
-            var diffOfDates = dateOfClaim - dateOfAccident;
+            TimeSpan diffOfDates = dateOfClaim - dateOfAccident;
 
             IsValid = (diffOfDates.Days <= 30);
         }
