@@ -30,7 +30,7 @@ namespace Challenge1.ConsoleApp
                 Console.WriteLine("2. Remove menu item");
                 Console.WriteLine("3. View menu");
                 Console.WriteLine("4. Exit");
-                Console.WriteLine("Choose action: ");
+                Console.Write("Choose action: ");
                 char s = Console.ReadKey().KeyChar;
                 switch (s)
                 {
@@ -84,7 +84,7 @@ namespace Challenge1.ConsoleApp
             mealIngredients = new List<string>();
             do
             {
-                Console.Write("Enter ingredients, one per line; enter . to finish.\n");
+                Console.WriteLine("Enter ingredients, one per line; enter . to finish.");
                 userInput = Console.ReadLine();
                 if (userInput != ".") mealIngredients.Add(userInput);
             }
@@ -100,7 +100,18 @@ namespace Challenge1.ConsoleApp
             while (success == false);
 
             MenuItem newItem = new MenuItem(mealNumber, mealName, mealDescription, mealIngredients, mealPrice);
-            _mymenu.Add(newItem);
+            
+            success = _mymenu.Add(newItem);
+            if (success == true)
+            {
+                Console.WriteLine("Menu item added successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to add menu item.");
+            }
+            Console.WriteLine("Push a key to continue.");
+            Console.ReadKey();
         }
 
 
@@ -125,7 +136,14 @@ namespace Challenge1.ConsoleApp
             if (itemToRemove != null)
             {
                 _mymenu.Remove(itemToRemove);
+                Console.WriteLine("Item removed successfully.");
             }
+            else
+            {
+                Console.WriteLine("Specified item not on menu. No action taken.");
+            }
+            Console.WriteLine("Push a key to continue.");
+            Console.ReadKey();
         }
 
         private void ViewMenu()

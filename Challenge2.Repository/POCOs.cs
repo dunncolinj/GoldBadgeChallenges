@@ -32,6 +32,4 @@ namespace Challenge2.Repository
             IsValid = (diffOfDates.Days <= 30);
         }
     }
-
-
 }

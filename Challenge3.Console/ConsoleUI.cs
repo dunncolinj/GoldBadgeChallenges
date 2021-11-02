@@ -23,6 +23,7 @@ namespace Challenge3.ConsoleApp
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("Main Menu\n");
                 Console.WriteLine("1. Add a badge");
                 Console.WriteLine("2. Edit badge door assignments");
@@ -102,6 +103,8 @@ namespace Challenge3.ConsoleApp
             {
                 Console.WriteLine("Badge was not added.");
             }
+            Console.WriteLine("Please push a key to continue.");
+            Console.ReadKey();
         }
 
         public void EditBadge()
@@ -122,10 +125,12 @@ namespace Challenge3.ConsoleApp
                 switch (userInput)
                 {
                     case '1':
+                        Console.Clear();
                         badgeNumber = getBadge();
                         AddDoor(badgeNumber);
                         break;
                     case '2':
+                        Console.Clear();
                         badgeNumber = getBadge();
                         RemoveDoor(badgeNumber);
                         break;
@@ -180,13 +185,15 @@ namespace Challenge3.ConsoleApp
                 {
                     Console.WriteLine("User did not have access to door " + userInput + ". No action taken.");
                 }
-                Console.Write("Badge " + id + "has access to doors: ");
+                Console.Write("Badge " + id + " has access to doors: ");
                 foreach (string door in newDoors)
                 {
                     Console.Write(door + " ");
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("Please push a key to continue.");
+            Console.ReadKey();
         }
 
         public void AddDoor(int id)
@@ -208,19 +215,21 @@ namespace Challenge3.ConsoleApp
                 newDoors.Add(userInput);
                 _badges.UpdateDoors(id, newDoors);
 
-                Console.Write("Badge " + id + "has access to doors: ");
+                Console.Write("Badge " + id + " has access to doors: ");
                 foreach (string door in newDoors)
                 {
                     Console.Write(door + " ");
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("Please push a key to continue.");
+            Console.ReadKey();
         }
 
         public void ListBadges()
         {
             var _badgeCopy = _badges.Read();
-            
+            Console.Clear();
             if (_badgeCopy.Count == 0)
             {
                 Console.WriteLine("No badge information to display.");
@@ -228,7 +237,7 @@ namespace Challenge3.ConsoleApp
             else
             {
                 Console.WriteLine("Badge #\tDoor Access");
-                Console.WriteLine("-------\t-----------");
+                Console.WriteLine("-------\t-----------\n");
 
                 foreach (KeyValuePair<int, Badge> kvp in _badgeCopy)
                 {

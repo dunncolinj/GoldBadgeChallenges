@@ -59,15 +59,18 @@ namespace Challenge2.ConsoleApp
             Console.WriteLine("Claim ID   Type    Description         Amount      Date of Accident   Date of Claim   Is Valid?");
             Console.WriteLine("-----------------------------------------------------------------------------------------------");
 
+            string row;
+
             foreach (Claim item in allClaims._claims)
             {
-                Console.WriteLine("{0,10} {1,7} {2,20} ${3,11} {4,18} {5,15} {6,5}", item.ClaimID, item.TypeOfClaim, item.Description, item.ClaimAmount, item.DateOfAccident, item.DateOfClaim, item.IsValid);
+                row = String.Format("{0,-10} {1,-7} {2,-19} ${3,-10} {4,-18} {5,-15} {6,-9}", item.ClaimID, item.TypeOfClaim, item.Description, item.ClaimAmount, item.DateOfAccident.ToShortDateString(), item.DateOfClaim.ToShortDateString(), item.IsValid);
+                Console.WriteLine(row);
             }
             Console.WriteLine("\n");
             Console.WriteLine("Push any key to continue.");
             Console.ReadKey();
         }
-
+        
         public void NextClaim()
         {
             bool keepRunning = true;
@@ -79,6 +82,7 @@ namespace Challenge2.ConsoleApp
                 if (claimToProcess == null)
                 {
                     Console.WriteLine("No claims waiting to be processed.");
+                    keepRunning = false;
                 }
                 else
                 {
@@ -92,6 +96,7 @@ namespace Challenge2.ConsoleApp
                     Console.WriteLine("\n");
                     Console.Write("Do you want to process this claim now (Y/N)? ");
                     response = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
                     switch (response)
                     {
                         case 'Y':
@@ -119,6 +124,8 @@ namespace Challenge2.ConsoleApp
                 }
             }
             while (keepRunning == true);
+            Console.WriteLine("Push any key to continue.");
+            Console.ReadKey();
         }
 
         public void NewClaim()
@@ -131,6 +138,8 @@ namespace Challenge2.ConsoleApp
             decimal claimAmount;
             DateTime dateOfAccident;
             DateTime dateOfClaim;
+
+            Console.Clear();
 
             do
             {
