@@ -10,8 +10,7 @@ namespace Challenge1.Repository
 
     public class Menu
     {
-        public List<MenuItem> _menu = new List<MenuItem>();
-           
+        public List<MenuItem> _menu = new List<MenuItem>(); 
             
         public bool Add(MenuItem itemToAdd)
         {
