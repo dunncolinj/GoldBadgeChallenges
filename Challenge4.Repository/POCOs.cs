@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Challenge4.Repository
 {
-
     public enum Event { Golf, Bowling, AmusementPark, Concert }
 
     public class Outing

@@ -36,15 +36,19 @@ namespace Challenge4.ConsoleApp
                 switch (userInput)
                 {
                     case '1':
+                        Console.Clear();
                         AddOuting();
                         break;
                     case '2':
+                        Console.Clear();
                         DisplayAllOutings();
                         break;
                     case '3':
+                        Console.Clear();
                         DisplayAllOutingsCost();
                         break;
                     case '4':
+                        Console.Clear();
                         DisplayOutingsCostByType();
                         break;
                     case '5':
@@ -99,6 +103,8 @@ namespace Challenge4.ConsoleApp
                 }
             }
             while (inputValid == false);
+            
+            Console.WriteLine();
 
             do
             {
@@ -133,17 +139,17 @@ namespace Challenge4.ConsoleApp
         {
             string lineItem;
 
-            Console.WriteLine("Event Type | Attendees | Event Date | Cost per Person | Total Cost");
-            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine("Event Type    | Attendees | Event Date | Cost per Person | Total Cost");
+            Console.WriteLine("---------------------------------------------------------------------");
 
             foreach (Outing item in _outings._outingList)
             {
-                lineItem = String.Format("{0,-10} | {1,-9} | {2,-10} | ${3,-14} | ${4,-9}", item.EventType, item.Attendees, item.EventDate.ToShortDateString(), item.CostPerPerson, item.TotalCost);
+                lineItem = String.Format("{0,-13} | {1,-9} | {2,-10} | ${3,-14} | ${4,-9}", item.EventType, item.Attendees, item.EventDate.ToShortDateString(), item.CostPerPerson, item.TotalCost);
                 Console.WriteLine(lineItem);
-                Console.WriteLine("\n");
-                Console.WriteLine("Push a key to continue.");
-                Console.ReadKey();
             }
+            Console.WriteLine("\n");
+            Console.WriteLine("Push a key to continue.");
+            Console.ReadKey();
         }
 
         public void DisplayAllOutingsCost()
@@ -195,8 +201,11 @@ namespace Challenge4.ConsoleApp
             }
             while (inputValid == false);
 
+            Console.WriteLine();
             sum = _outings.GetCostByType(typeOfEvent);
             Console.WriteLine("The total cost for " + typeOfEvent + " outings is: $" + sum);
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
         }
     } 
 }
